@@ -1,5 +1,4 @@
 # Write your code here
-from re import S
 from pydantic import BaseModel, ConfigDict
 from datetime import date
 from typing import List, Optional
@@ -24,6 +23,8 @@ class MovieDetailResponseSchema(BaseModel):
 
 
 class MovieListResponseSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     movies: List[MovieDetailResponseSchema]
     prev_page: Optional[str] = None
     next_page: Optional[str] = None
